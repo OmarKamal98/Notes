@@ -25,11 +25,15 @@ public class Note {
         return FirebaseDatabase.getInstance().getReference().child("user").child("note").push().getKey();
 
     }
+
     public static String longToDate(long val){
         Date date=new Date(val);
         SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
         String dateText = df2.format(date);
         return dateText;
+    }
+    public String getidNote( ){
+        return  idOfNote ;
     }
     // id getter and setter
 }

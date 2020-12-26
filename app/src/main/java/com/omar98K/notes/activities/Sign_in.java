@@ -31,7 +31,7 @@ public class Sign_in extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText emailEt,passwordEt;
     ProgressBar progressBar;
-   //private static final int RC_SIGN_IN = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,55 +42,7 @@ public class Sign_in extends AppCompatActivity {
         passwordEt =  (EditText) findViewById(R.id.edit_text_password_login);
 
     }
-    /*
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
-   public void createSignInIntent() {
-        // [START auth_fui_create_intent]
-        // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build()
- //               new AuthUI.IdpConfig.PhoneBuilder().build(),
- //          new AuthUI.IdpConfig.GoogleBuilder().build()
-//                new AuthUI.IdpConfig.FacebookBuilder().build()
-//                new AuthUI.IdpConfig.TwitterBuilder().build()
-        );
 
-        // Create and launch sign-in intent
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers)
-                        .build(),
-                RC_SIGN_IN);
-        // [END auth_fui_create_intent]
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-//            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if (resultCode == RESULT_OK) {
-                // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
-
-            }
-        }
-    }
-*/
     public void home(View view) {
         Intent ss = new Intent(this, Splash.class);
         startActivity(ss);

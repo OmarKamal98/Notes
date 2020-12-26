@@ -1,9 +1,7 @@
 package com.omar98K.notes.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,7 +11,7 @@ import com.omar98K.notes.classes.Note;
 import java.util.Date;
 public class AddNewNote extends AppCompatActivity {
     EditText title,contextDes;
-    RecyclerView  noteV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +26,7 @@ public class AddNewNote extends AppCompatActivity {
     }
 
     public void OnClickAdd(View view) {
-        Intent intent=new Intent();
+
         Note note=new Note(Home_Page.currentNotebookId,Note.generateNoteID(),title.getText().toString(),contextDes.getText().toString(),new Date().getTime());
         Home_Page.writeNote(note);
         Toast.makeText(this,"Note is added successfully" , Toast.LENGTH_SHORT).show();

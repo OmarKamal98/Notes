@@ -24,7 +24,7 @@ import com.omar98K.notes.classes.Note;
 
 import java.util.ArrayList;
 
-import static com.omar98K.notes.activities.Home_Page.initNoteData;
+
 import static com.omar98K.notes.activities.Home_Page.noteAdapter;
 
 public class ShowNote extends AppCompatActivity {

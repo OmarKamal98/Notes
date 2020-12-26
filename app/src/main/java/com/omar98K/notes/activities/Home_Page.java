@@ -29,7 +29,6 @@ import java.util.ArrayList;
 public class Home_Page extends AppCompatActivity {
     public static String currentNotebookId="non";
     private static DatabaseReference mDatabase;
-    public static Integer currentCateId=0;
     public static ValueEventListener valueEventListener;
     //book tools
     private RecyclerView bookRecyclerView;

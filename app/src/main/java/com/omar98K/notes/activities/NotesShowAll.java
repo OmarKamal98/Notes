@@ -55,7 +55,7 @@ public class NotesShowAll extends AppCompatActivity {
         notesAdapter.setOnItemClickListener(new AllNotebooksAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                String name = notes.get(position).contextOfNote;
+
                 Intent intent = new Intent(NotesShowAll.this,EditeNote.class);
                 intent.putExtra("note name", notes.get(position).titleOfNote);
                 intent.putExtra("note context", notes.get(position).contextOfNote);

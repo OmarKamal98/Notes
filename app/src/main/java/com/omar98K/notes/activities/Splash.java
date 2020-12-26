@@ -15,14 +15,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-       /* preferences = getSharedPreferences("Prefs", MODE_PRIVATE);
-        if (preferences.getBoolean("is_logged_in", false)) {
 
-            // Go to home activity (user logged in)
-            Intent intent = new Intent(this, HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        }*/
     }
 
     public void signup_splash(View view) {

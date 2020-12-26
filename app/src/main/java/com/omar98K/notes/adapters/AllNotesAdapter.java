@@ -11,6 +11,7 @@ import com.omar98K.notes.R;
 import com.omar98K.notes.classes.Note;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AllNotesAdapter  extends RecyclerView.Adapter<AllNotesAdapter.ViewHolder>{
 
@@ -20,6 +21,7 @@ public class AllNotesAdapter  extends RecyclerView.Adapter<AllNotesAdapter.ViewH
     public AllNotesAdapter(ArrayList<Note> data){
         this.data = data;
     }
+
 
     //onItemClick
     public interface OnItemClickListener{

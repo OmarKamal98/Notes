@@ -18,8 +18,7 @@ import static com.omar98K.notes.activities.Home_Page.books;
 
 public class Create_Notebook_Page extends Activity {
     String noteBookName;
-    SharedPreferences preferences;
-    int categoryImage;
+
     ImageView img;
     EditText name1;
     static NoteBook mNoteBook=new NoteBook();

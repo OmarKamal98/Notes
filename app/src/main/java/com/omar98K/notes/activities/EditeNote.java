@@ -7,15 +7,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+ import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.omar98K.notes.R;
 import com.omar98K.notes.classes.Note;
-
 import java.util.Date;
 
 public class EditeNote  extends AppCompatActivity {
     EditText nName,nContext;
     TextView nDate;
+    private static DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +43,21 @@ public class EditeNote  extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void Delete(View view) {
+        deleteCategory();
+    }
+    private void deleteCategory() {
+        Note note=new Note(Home_Page.currentNotebookId,Home_Page.notes.get(getIntent().getIntExtra("note position",0)).idOfNote,nName.getText().toString(),nContext.getText().toString(),new Date().getTime());
+        String userId = FirebaseAuth.getInstance().getUid();
+        mDatabase=FirebaseDatabase.getInstance().getReference().child("User").child(userId ).child("Note").child(note.idOfNote);
+        mDatabase.removeValue();
+
+        Intent intent=new Intent(EditeNote.this,NotesShowAll.class);
+        startActivity(intent);
+        finish();
+
+    }
+
 }
 

@@ -21,13 +21,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         this.data = data;
     }
 
-    //onItemClick
-    public interface OnItemClickListener{
-        void onItemClick(int position);
-    }
-    public void setOnItemClickListener(AllNotebooksAdapter.OnItemClickListener listener){
-        mListener=listener;
-    }
+
 
 
     @Override
