@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="notebooks">Notebooks are the best place \n to manage your notes</string>
+    <string name="notebook2">Simply create your note and \n add it to your favorite \n notebook</string>
+    <string name="signup">Let’s complete  creation \nof your Notebooks account</string>
+    <string name="signin">Welcome back!\nYou’ve been missed</string>
+    <string name="checkemail">We’ve sent instructions on how to reset\nThe password (also check the Spam folder).</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sing_in">Sing in</string>
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="todo">TODO</string>
+    <string name="here_you_can_write_the_context_of_the_note">here you can write the context of the note</string>
+    <string name="this_is_an_example_of_a_note_text_just_to_fill_some_lines_and_it_will_be_as_a_description_of_the_note">this is an example of a note text just to fill some lines and it will be as a description of the note</string>
+
+</resources>

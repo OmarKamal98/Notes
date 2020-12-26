@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NotesShowAll">
+    <ImageView
+        android:onClick="OnClickBackFromNotebooksToHome"
+        android:id="@+id/backSpace"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/backspacepurple"
+        />
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="34sp"
+        android:textColor="#000000"
+        android:text="Notes"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+      />
+    <EditText
+        android:id="@+id/search_edit_text_notes"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="120dp"
+        android:hint="Search"
+        android:textSize="17sp"
+        android:inputType="text"
+        android:textColorHint="#8E8E93"
+        android:background="@drawable/edit_text_shape"
+        android:drawableLeft="@drawable/searchicon"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_all_notes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:layout_below="@id/search_edit_text_notes"
+        android:layout_marginTop="250dp"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_show_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/plusss"
+        android:backgroundTint="#3D0F54"
+        android:onClick="onFabClicked_showAllNotes"
+        android:src="@drawable/fab_plus"
+        app:elevation="20dp"
+        app:fabSize="normal" />
+
+</RelativeLayout>

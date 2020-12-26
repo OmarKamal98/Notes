@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditeNote">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="44dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="371dp"
+        android:layout_marginRight="371dp"
+        android:onClick="OnClickBackFromEditNote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/left"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/nDate_edit_note"
+        android:layout_width="197dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:text="March 20 ,2018 15:35"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nTitle_edit_note"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@null"
+        android:gravity="left"
+        android:text="Notes App Desing"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nDate_edit_note" />
+
+
+    <EditText
+        android:id="@+id/nContext_edit_note"
+        android:layout_width="match_parent"
+        android:layout_height="6100dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@null"
+        android:gravity="left"
+        android:text="Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nTitle_edit_note"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:onClick="OnClickSave"
+        android:id="@+id/done_edit_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="16dp"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="#7B1E58"
+        android:background="@null"
+        app:layout_constraintStart_toEndOf="@+id/nDate_edit_note"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
