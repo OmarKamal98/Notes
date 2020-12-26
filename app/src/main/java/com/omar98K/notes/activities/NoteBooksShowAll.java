@@ -1,27 +1,36 @@
 package com.omar98K.notes.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.omar98K.notes.R;
 import com.omar98K.notes.adapters.AllNotebooksAdapter;
+import com.omar98K.notes.classes.Note;
 import com.omar98K.notes.classes.NoteBook;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NoteBooksShowAll extends AppCompatActivity {
     private RecyclerView bookRecyclerView;
     AllNotebooksAdapter bookAdapter;
     private RecyclerView.LayoutManager bookLayoutManager;
     ArrayList<NoteBook> books=Home_Page.books;
+    private static DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +45,42 @@ public class NoteBooksShowAll extends AppCompatActivity {
         //onCLick
         bookAdapter.setOnItemClickListener(new AllNotebooksAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
-                Intent intent=new Intent(NoteBooksShowAll.this,NotesShowAll.class);
-                Home_Page.currentNotebookId=books.get(position).id;
-                startActivity(intent);
+            public void onItemClick(final int position) {
+
+
+        AlertDialog alertDialog = new AlertDialog.Builder(NoteBooksShowAll.this)
+//set icon
+                .setIcon(android.R.drawable.ic_dialog_alert)
+//set title
+                .setTitle("what do you want")
+//set message
+                .setMessage("Show or delete notes")
+//set positive button
+                .setPositiveButton("Show", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent=new Intent(NoteBooksShowAll.this,NotesShowAll.class);
+                        Home_Page.currentNotebookId=books.get(position).id;
+                        startActivity(intent);
+                    }
+                })
+//set negative button
+                .setNegativeButton("delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int a=0;
+                        NoteBook notebook=new NoteBook(Home_Page.currentNotebookId,Home_Page.currentNotebookId,a);
+                        String userId = FirebaseAuth.getInstance().getUid();
+                        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(userId ).child("NoteBook").child(notebook.getId());
+                        mDatabase.removeValue();
+                        Intent intent=new Intent(NoteBooksShowAll.this,NoteBooksShowAll.class);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(getApplicationContext(),"The NoteBook  has been deleted",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .show();
+
             }
         });
         //search filter

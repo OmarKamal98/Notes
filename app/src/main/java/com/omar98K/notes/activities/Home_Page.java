@@ -10,8 +10,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -130,12 +134,14 @@ public class Home_Page extends AppCompatActivity {
     public static void writeNotebook(NoteBook noteBook) {
         Log.d("FIREBASE", "Writing notebook");
         String userId =FirebaseAuth.getInstance().getUid();
+
         mDatabase.child("User").child(userId).child("NoteBook").child(noteBook.id).setValue(noteBook);
     }
     //add note in firebase database
     public static void writeNote(Note note) {
         Log.d("FIREBASE", "Writing notebook");
         String userId =FirebaseAuth.getInstance().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase.child("User").child(userId).child("Note").child(note.idOfNote).setValue(note);
         notes.add(note);
       
@@ -144,6 +150,7 @@ public class Home_Page extends AppCompatActivity {
 
 
     public void onClickLogOut(View view) {
+        FirebaseAuth.getInstance().signOut();
         Intent out=new Intent(this,Sign_in.class);
         startActivity(out);
 

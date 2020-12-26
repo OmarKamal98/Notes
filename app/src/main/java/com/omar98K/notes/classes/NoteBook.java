@@ -26,9 +26,9 @@ public class NoteBook {
 //    public void setId(int id) {
 //        this.id = id;
 //    }
-//    public int getId() {
-//        return id;
-//    }
+        public String getId() {
+           return id;
+        }
 ////  name getter and setter
 //    public String getName() {
 //        return name;
