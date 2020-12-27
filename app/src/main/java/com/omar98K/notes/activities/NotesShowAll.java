@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,6 +59,7 @@ public class NotesShowAll extends AppCompatActivity {
          initNoteData();
         //recycler of notes
         noteRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_all_notes);
+        noteRecyclerView.setHasFixedSize(true);
         noteLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         noteRecyclerView.setLayoutManager(noteLayoutManager);
         notesAdapter = new AllNotesAdapter(notes);
@@ -114,10 +116,13 @@ public class NotesShowAll extends AppCompatActivity {
     }
 
     public void onFabClicked_showAllNotes(View view) {
+        if (namenotebook.getText().toString()=="non") {
+            Toast.makeText(this,"Please choose a notebook",Toast.LENGTH_LONG).show();
+        }else{
         Intent as=new Intent(this,AddNewNote.class);
         startActivity(as);
         NotesShowAll.this.finish();
-    }
+    }}
     //get note for notebook
     public static void initNoteData2() {
         FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getUid()).child("Note")

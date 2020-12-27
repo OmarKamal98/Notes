@@ -25,6 +25,8 @@ import com.omar98K.notes.classes.NoteBook;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.omar98K.notes.activities.Home_Page.nameOfNoteBook;
+
 public class NoteBooksShowAll extends AppCompatActivity {
     private RecyclerView bookRecyclerView;
     AllNotebooksAdapter bookAdapter;
@@ -47,6 +49,7 @@ public class NoteBooksShowAll extends AppCompatActivity {
             @Override
             public void onItemClick(final int position) {
                 Intent intent=new Intent(NoteBooksShowAll.this,NotesShowAll.class);
+                nameOfNoteBook=books.get(position).name;
                 Home_Page.currentNotebookId=books.get(position).id;
                 startActivity(intent);
 
