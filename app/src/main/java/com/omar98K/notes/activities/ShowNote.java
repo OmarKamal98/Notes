@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import com.omar98K.notes.classes.Note;
 import java.util.ArrayList;
 
 
+import static com.omar98K.notes.activities.Home_Page.nameOfNoteBook;
 import static com.omar98K.notes.activities.Home_Page.noteAdapter;
 
 public class ShowNote extends AppCompatActivity {
@@ -33,12 +35,16 @@ public class ShowNote extends AppCompatActivity {
     private RecyclerView.LayoutManager noteLayoutManager;
     ArrayList<Note> notes;
     public static ValueEventListener valueEventListener2;
-
+    TextView namenotebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_show_all);
+
+        namenotebook=findViewById(R.id.nameNoteBook);
+
+        namenotebook.setText( nameOfNoteBook );
         //notes data
         notes = Home_Page.notes;
         initNoteData2();

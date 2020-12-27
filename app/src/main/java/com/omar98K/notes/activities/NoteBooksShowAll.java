@@ -30,7 +30,7 @@ public class NoteBooksShowAll extends AppCompatActivity {
     AllNotebooksAdapter bookAdapter;
     private RecyclerView.LayoutManager bookLayoutManager;
     ArrayList<NoteBook> books=Home_Page.books;
-    private static DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,40 +46,9 @@ public class NoteBooksShowAll extends AppCompatActivity {
         bookAdapter.setOnItemClickListener(new AllNotebooksAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(final int position) {
-
-
-        AlertDialog alertDialog = new AlertDialog.Builder(NoteBooksShowAll.this)
-//set icon
-                .setIcon(android.R.drawable.ic_dialog_alert)
-//set title
-                .setTitle("what do you want")
-//set message
-                .setMessage("Show or delete notes")
-//set positive button
-                .setPositiveButton("Show", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent=new Intent(NoteBooksShowAll.this,NotesShowAll.class);
-                        Home_Page.currentNotebookId=books.get(position).id;
-                        startActivity(intent);
-                    }
-                })
-//set negative button
-                .setNegativeButton("delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        int a=0;
-                        NoteBook notebook=new NoteBook(Home_Page.currentNotebookId,Home_Page.currentNotebookId,a);
-                        String userId = FirebaseAuth.getInstance().getUid();
-                        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(userId ).child("NoteBook").child(notebook.getId());
-                        mDatabase.removeValue();
-                        Intent intent=new Intent(NoteBooksShowAll.this,NoteBooksShowAll.class);
-                        startActivity(intent);
-                        finish();
-                        Toast.makeText(getApplicationContext(),"The NoteBook  has been deleted",Toast.LENGTH_LONG).show();
-                    }
-                })
-                .show();
+                Intent intent=new Intent(NoteBooksShowAll.this,NotesShowAll.class);
+                Home_Page.currentNotebookId=books.get(position).id;
+                startActivity(intent);
 
             }
         });

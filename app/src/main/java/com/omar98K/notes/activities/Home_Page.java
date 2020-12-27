@@ -31,6 +31,7 @@ import com.omar98K.notes.classes.NoteBook;
 import java.util.ArrayList;
 
 public class Home_Page extends AppCompatActivity {
+    public static String nameOfNoteBook="non";
     public static String currentNotebookId="non";
     private static DatabaseReference mDatabase;
     public static ValueEventListener valueEventListener;
@@ -79,7 +80,7 @@ public class Home_Page extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
 
-                String name=books.get(position).name;
+                nameOfNoteBook=books.get(position).name;
                 String id=books.get(position).id;
 
                 currentNotebookId=id;

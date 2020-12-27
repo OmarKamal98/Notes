@@ -1,30 +1,38 @@
 package com.omar98K.notes.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.omar98K.notes.R;
 import com.omar98K.notes.adapters.AllNotebooksAdapter;
 import com.omar98K.notes.adapters.AllNotesAdapter;
 import com.omar98K.notes.classes.Note;
+import com.omar98K.notes.classes.NoteBook;
 
 import java.util.ArrayList;
 
+import static com.omar98K.notes.activities.Home_Page.books;
 import static com.omar98K.notes.activities.Home_Page.initNoteData;
+import static com.omar98K.notes.activities.Home_Page.nameOfNoteBook;
 import static com.omar98K.notes.activities.Home_Page.noteAdapter;
 
 public class NotesShowAll extends AppCompatActivity {
@@ -34,12 +42,16 @@ public class NotesShowAll extends AppCompatActivity {
     private RecyclerView.LayoutManager noteLayoutManager;
     ArrayList<Note> notes;
     public static ValueEventListener valueEventListener2;
-
-
+    private static DatabaseReference mDatabase;
+    TextView namenotebook;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_show_all);
+
+        namenotebook=findViewById(R.id.nameNoteBook);
+
+        namenotebook.setText( nameOfNoteBook );
         //notes data
         notes = Home_Page.notes;
 
@@ -125,5 +137,40 @@ public class NotesShowAll extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
+    }
+
+    public void deleteNoteBook(View view) {
+
+        AlertDialog alertDialog = new AlertDialog.Builder(NotesShowAll.this)
+//set icon
+                .setIcon(android.R.drawable.ic_dialog_alert)
+//set title
+                .setTitle("Delete NoteBook")
+//set message
+                .setMessage("Are you sure the notebook will be deleted? ")
+//set positive button
+                .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int a=0;
+                        NoteBook notebook=new NoteBook(Home_Page.currentNotebookId,Home_Page.currentNotebookId,a);
+                        String userId = FirebaseAuth.getInstance().getUid();
+                        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(userId ).child("NoteBook").child(notebook.getId());
+                        mDatabase.removeValue();
+                        Intent intent=new Intent(NotesShowAll.this,NoteBooksShowAll.class);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(getApplicationContext(),"The NoteBook  has been deleted",Toast.LENGTH_LONG).show();
+                    }
+                })
+//set negative button
+                .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
+
     }
 }

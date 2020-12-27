@@ -15,20 +15,44 @@
         android:src="@drawable/backspacepurple"
         />
     <TextView
+        android:id="@+id/nameNoteBook"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:textSize="34sp"
+        android:textSize="32sp"
         android:textColor="#000000"
-        android:text="Notes"
+
         android:layout_marginLeft="20dp"
         android:layout_marginTop="70dp"
+        />
+    <TextView
+        android:id="@+id/deleteNoteBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deleteNoteBook"
+        android:textSize="28sp"
+        android:layout_alignParentEnd="true"
+        android:text="Delete "
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        />
+    <TextView
+        android:id="@+id/note22"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:layout_below="@+id/nameNoteBook"
+        android:text="Notes"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="24dp"
       />
     <EditText
         android:id="@+id/search_edit_text_notes"
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/note22"
         android:hint="Search"
         android:textSize="17sp"
         android:inputType="text"
