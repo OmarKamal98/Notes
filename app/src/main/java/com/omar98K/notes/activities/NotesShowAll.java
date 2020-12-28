@@ -30,6 +30,7 @@ import com.omar98K.notes.classes.Note;
 import com.omar98K.notes.classes.NoteBook;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.omar98K.notes.activities.Home_Page.books;
 import static com.omar98K.notes.activities.Home_Page.initNoteData;
@@ -145,22 +146,26 @@ public class NotesShowAll extends AppCompatActivity {
     }
 
     public void deleteNoteBook(View view) {
-
+        int a=0;
+       final NoteBook notebook=new NoteBook(Home_Page.currentNotebookId,Home_Page.currentNotebookId,a);
         AlertDialog alertDialog = new AlertDialog.Builder(NotesShowAll.this)
 //set icon
                 .setIcon(android.R.drawable.ic_dialog_alert)
 //set title
                 .setTitle("Delete NoteBook")
 //set message
-                .setMessage("Are you sure the notebook will be deleted? ")
+                .setMessage("Are you sure the notebook '"+nameOfNoteBook+"' will be deleted? ")
 //set positive button
                 .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        int a=0;
-                        NoteBook notebook=new NoteBook(Home_Page.currentNotebookId,Home_Page.currentNotebookId,a);
+
                         String userId = FirebaseAuth.getInstance().getUid();
-                        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(userId ).child("NoteBook").child(notebook.getId());
+                        mDatabase= FirebaseDatabase.getInstance().getReference().child("User").child(userId).child("NoteBook").child(notebook.getId());
+                        mDatabase.removeValue();
+
+                        Note note=new Note(Home_Page.currentNotebookId,Home_Page.notes.get(getIntent().getIntExtra("note position",0)).idOfNote);
+                        mDatabase=FirebaseDatabase.getInstance().getReference().child("User").child(userId).child("Note").child(note.idOfNote);
                         mDatabase.removeValue();
                         Intent intent=new Intent(NotesShowAll.this,NoteBooksShowAll.class);
                         startActivity(intent);

@@ -17,8 +17,12 @@ public class Note {
         this.noteBookId=noteBookId;
         this.titleOfNote = titleOfNote;
         this.contextOfNote = contextOfNote;
-
         this.dateOfNote = dateOfNote;
+    }
+    public Note(String noteBookId,String idOfNote) {
+        this.idOfNote = idOfNote;
+        this.noteBookId=noteBookId;
+
     }
 
     public static String generateNoteID(){
